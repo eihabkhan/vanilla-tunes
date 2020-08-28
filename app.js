@@ -38,6 +38,37 @@ function pauseSong() {
     audio.pause();
 }
 
+function prevSong() {
+    currentSongIndex--;
+    if (currentSongIndex < 0) {
+        currentSongIndex = songs.length - 1;
+    }
+    loadSong(songs[currentSongIndex]);
+    playSong();
+}
+
+function nextSong() {
+    currentSongIndex++
+    if (currentSongIndex > songs.length - 1) {
+        currentSongIndex = 0;
+    }
+    loadSong(songs[currentSongIndex]);
+    playSong();
+}
+
+function updateProgress(e) {
+    const { duration, currentTime } = e.srcElement;
+    const progressPercentage = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercentage}%`
+}
+
+function setProgress(e) {
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+
+    audio.currentTime = (clickX / width) * duration
+}
 
 playBtn.addEventListener("click", () => {
     const isPlaying = musicContainer.classList.contains("play");
@@ -48,3 +79,14 @@ playBtn.addEventListener("click", () => {
         playSong()
     }
 });
+
+prevBtn.addEventListener("click", prevSong)
+nextBtn.addEventListener("click", nextSong)
+
+audio.addEventListener("timeupdate", updateProgress);
+
+// Change progress from progress bar
+progressContainer.addEventListener("click", setProgress);
+
+// on Song end
+audio.addEventListener("ended", nextSong)
