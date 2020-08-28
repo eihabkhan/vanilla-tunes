@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Tunes</title>
+    <script src="https://kit.fontawesome.com/d62ee6efac.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="logo">
+        <img src="img/icon.png" alt="App Icon">
+        <h1>Vanilla Tunes</h1>
+    </div>
+    <div class="music-container" id="music-container">
+        <div class="music-info">
+            <h4 id="title"></h4>
+            <div class="progress-container" id="progress-container">
+                <div class="progress" id="progress">
+
+                </div>
+            </div>
+        </div>
+        <audio src="music/zomb.mp3" id="audio"></audio>
+        <div class="img-container">
+            <img src="img/zomb.jpeg" id="cover" alt="Song Artwork">
+        </div>
+        <div class="navigation">
+            <button id="prev" class="action-btn">
+                <i class="fas fa-backward" aria-hidden="true"></i>
+            </button>
+            <button id="play" class="action-btn action-btn-big">
+                <i class="fas fa-play" aria-hidden="true"></i>
+            </button>
+            <button id="next" class="action-btn">
+                <i class="fas fa-forward" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</body>
+</html> 
